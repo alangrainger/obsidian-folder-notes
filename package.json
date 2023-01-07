@@ -1,6 +1,6 @@
 {
 	"name": "folder-notes",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Adds Folder Notes to the default file tree.",
 	"main": "main.js",
 	"scripts": {
