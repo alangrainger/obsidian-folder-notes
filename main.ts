@@ -15,7 +15,6 @@ export default class FolderNotes extends Plugin {
               element.onclick = (event) => {
                 // Stop the normal folder click executing
                 event.stopImmediatePropagation()
-                event.stopPropagation()
                 if (element.parentElement) {
                   const folder = element.parentElement.getAttribute('data-path')
                   const path = folder + '/' + element.innerText + '.md'
@@ -27,6 +26,11 @@ export default class FolderNotes extends Plugin {
                       if (file instanceof TFile) {
                         await leaf.openFile(file)
                       }
+                    } else {
+                      // If the folder note doesn't exist, remove the custom click handler,
+                      // and send the click event again to execute the default click function
+                      element.onclick = null
+                      element.click()
                     }
                   })
                 }
